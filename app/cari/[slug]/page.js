@@ -104,18 +104,40 @@ export default async function DetailCari({ params }) {
 
   return (
     <div>
-
-      <h3>Data User : {params.slug}</h3>
-      <ul>
-        <li>{JSON.stringify(dataUser.name)}</li>
-        <li>{JSON.stringify(dataUser.company)}</li>
-      </ul>
-
-
-      <Suspense fallback={<h4>Sedang mengambil repository...</h4>}>
-        <RepoList slug={params.slug} />
-      </Suspense>
-
+      
+      {/* <h3>Data User : {params.slug}</h3> */}
+     
+      <div className='my-4'>
+        <div class="px-4 sm:px-0">
+          <h3 class="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>
+          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
+        </div>
+        <div class="mt-6 border-t border-gray-100">
+          <dl class="divide-y divide-gray-100">
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataUser.name}</dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">Company</dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataUser.company}</dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">Location</dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataUser.location ? (dataUser.location) : '-'}</dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"> {dataUser.bio} </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <Suspense fallback={<h4>Sedang mengambil repository...</h4>}>
+                <RepoList slug={params.slug} />
+              </Suspense>
+            </div>
+          </dl>
+        </div>
+      </div>
     </div>
   )
 }
