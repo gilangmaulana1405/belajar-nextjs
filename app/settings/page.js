@@ -1,5 +1,5 @@
 import React from 'react'
-import SectionProfile from './SectionProfile'
+import SectionProfile from './sectionProfile'
 
 
 const Settings = () => {
